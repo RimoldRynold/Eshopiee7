@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+
+<div class="container" style="background-image: url({% static 'c.jpg' %});">
+    <div class="container mt-5">
+        <div class="p-4 m-4">
+            <div class="col-lg-4 mt-4 mb-4 mx-auto border border-dark p-4">
+                <h3 class="alert alert-light border rounded ">Login Here</h3>
+                <form action="/login1" method="POST">
+                    {% csrf_token %}
+                    {% if error %}
+                    <div class="alert alert-danger" role="alert">
+                        {{error}}
+                    </div>
+                    {% endif %}
+                    <!-- email -->
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="email" name="email" id="" class="form-control form-control-sm"
+                            placeholder="example@gmail.com" value="{{values.email}}">
+                    </div>
+                    <!-- end email -->
+                    <!-- password -->
+                    <div class="form-group">
+                        <label for="password">Password</label>
+                        <input type="password" name="password" id="" class="form-control form-control-sm"
+                            placeholder="********" value="{{values.password}}">
+                    </div>
+                    <!-- end password -->
+                    <div class="form-group mt-2">
+                        <input class="btn btn-sm btn-info col-lg-3" type="submit" value="Login">
+                    </div>
+
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

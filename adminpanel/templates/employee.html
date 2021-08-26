@@ -1,0 +1,41 @@
+{% extends 'base1.html' %}
+{% load static %}
+
+
+{% block content %}
+<div class="col-md">
+    <h5>EMPLOYEES</h5>
+    <hr>
+    <div class="card card-body">
+        <!-- <a href="" class="btn btn-primary btn-sm btn-block">
+            Create Customer
+        </a> -->
+        <table class="table table-lg mb-5">
+            <tr>
+                <th></th>
+                <th></th>
+                <th>Employee Name</th>
+                <th>Phone</th>
+                <th>Email</th>
+                <th>Profile Created on</th>
+            </tr>
+            {% for employee in employees %}
+            <tr>
+                <td><a class="btn btn-sm btn-info" href="{% url 'employee_update' employee.id %}">Update</a></td>
+                <td><a class="btn btn-sm btn-danger" href="{% url 'delete_employee' employee.id %}">Delete</a></td>
+                <td>{{employee.name}} </td>
+                <td>{{employee.phone}}</td>
+                <td>{{employee.user.email}}</td>
+                <td>{{employee.date_created}}</td>
+
+                
+            </tr>
+            {% endfor %}
+            
+
+        </table>
+        <a class="btn btn-warning" href="{% url 'cust_reg' %}">Add New Employee</a>
+
+    </div>
+</div>
+{% endblock %}

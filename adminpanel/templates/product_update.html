@@ -1,0 +1,82 @@
+{% extends 'base1.html' %}
+{% load static %}
+{% load widget_tweaks %}
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  {% block content %}
+  <title>Contact Form</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.8.0/css/bulma.min.css">
+  <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
+</head>
+
+<body style="background-image: url({% static 'c.jpg' %});">
+	
+  <section class="section">
+    <div class="container">
+		<form method='post' enctype="multipart/form-data">
+			{% csrf_token %}
+      <div class="columns">
+        <div class="column is-half is-offset-one-quarter">
+            <div class="field">
+				<p class="h3">Update Product Details</p>
+			  </div>
+          <div class="field">
+            <label class="label">Product Name</label>
+            <div class="control">
+              {% render_field form.name class="input" placeholder="Product name" %}
+            </div>
+          </div>
+
+		  <div class="field">
+            <label class="label">Product Price</label>
+            <div class="control">
+                {% render_field form.price class="input" placeholder="Product Price" %}
+            </div>
+          </div>
+
+		  <div class="field">
+            <label class="label">Product Category</label>
+            <div class="control">
+              <div class="select">
+                {% render_field form.category %}
+              </div>
+            </div>
+          </div>
+
+		  <div class="field">
+            <label class="label">Description</label>
+            <div class="control">
+              {% render_field form.description rows="10" placeholder="Product Description" class+="textarea" %}
+            </div>
+          </div>
+
+
+          <div class="field">
+            <label class="label">Product Image</label>
+            <div class="control">
+              {% render_field form.image class="input" placeholder="you@email.com" %}
+            </div>
+          </div>
+          
+
+          <div class="field is-grouped">
+            <div class="control">
+              <button type="submit" class="button is-link">Submit</button>
+            </div>
+            <div class="control">
+              <button class="button is-link is-light">Cancel</button>
+            </div>
+          </div>
+        </div>
+      </div>
+	</form>
+    </div>
+  </section>
+
+</body>
+{% endblock %}
+</html>
